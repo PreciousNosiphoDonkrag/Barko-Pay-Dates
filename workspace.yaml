@@ -1,0 +1,5 @@
+load_from:
+  - python_module:
+      module_name: PAY_DATE_DEV
+      location_name: PAY_DATE_DEV
+      working_directory: "C:/Users/Nosipho/Documents/Docs/Dashboarding/Pay Date App/PAY_DATE_DEV"

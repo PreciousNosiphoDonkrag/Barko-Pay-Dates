@@ -1,0 +1,19 @@
+storage:
+  sqlite:
+    base_dir: "C:/Users/Nosipho/Documents/Docs/Dashboarding/Pay Date App/dagster_storage"
+
+run_coordinator:
+  module: dagster.core.run_coordinator
+  class: DefaultRunCoordinator
+
+run_launcher:
+  module: dagster.core.launcher
+  class: DefaultRunLauncher
+  
+python_logs:
+  managed_python_loggers:
+    - dagster
+
+telemetry:
+  enabled: false
+
