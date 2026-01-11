@@ -9,12 +9,12 @@ WITH source AS
         BranchEmail,
         RegionManagerEmail
     FROM REPLICATED_TABLES.V_Detailed_BAR_Hierarchy_REPL
-    WHERE lower(T24_Code) != lower('Unknown')
+    WHERE lower(T24_Code) != lower('Unknown') AND Active = '1'
 )
 
 SELECT
-    'BRANCH'           AS HIERARCHY_KEY,
-    BranchName         AS HIERARCHY,
+    'BRANCH'           AS HIERARCHY_KEY,         
+    IF(Upper(RegionName) = Upper('DIGITAL'), Upper('DIGITAL'), BranchName)  AS HIERARCHY,
     BranchEmail        AS HIERARCHY_EMAIL,
     [RegionName]                 AS REGIONS,
     [AreaName]                 AS AREAS,
@@ -26,8 +26,8 @@ UNION ALL
 
 SELECT
     'AREA'                       AS HIERARCHY_KEY,
-    AreaName                     AS HIERARCHY,
-    any(AreaManagerEmail)        AS HIERARCHY_EMAIL,
+    IF(Upper(RegionName) = Upper('DIGITAL'), Upper('DIGITAL'), AreaName)  AS HIERARCHY,
+    any(AreaManagerEmail)       AS HIERARCHY_EMAIL,
     [RegionName]                 AS REGIONS,
     [AreaName]                   AS AREAS,
     groupArrayDistinct(BranchName)  AS BRANCHES,
