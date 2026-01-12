@@ -13,8 +13,8 @@ WITH source AS
 )
 
 SELECT
-    'BRANCH'           AS HIERARCHY_KEY,         
-    IF(Upper(RegionName) = Upper('DIGITAL'), Upper('DIGITAL'), BranchName)  AS HIERARCHY,
+    'BRANCH'           AS HIERARCHY_KEY,           
+    BranchName AS HIERARCHY, --IF(Upper(RegionName) = Upper('DIGITAL'), Upper('DIGITAL'), BranchName)
     BranchEmail        AS HIERARCHY_EMAIL,
     [RegionName]                 AS REGIONS,
     [AreaName]                 AS AREAS,
@@ -26,7 +26,7 @@ UNION ALL
 
 SELECT
     'AREA'                       AS HIERARCHY_KEY,
-    IF(Upper(RegionName) = Upper('DIGITAL'), Upper('DIGITAL'), AreaName)  AS HIERARCHY,
+    AreaName  AS HIERARCHY,
     any(AreaManagerEmail)       AS HIERARCHY_EMAIL,
     [RegionName]                 AS REGIONS,
     [AreaName]                   AS AREAS,
