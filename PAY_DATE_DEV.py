@@ -1,9 +1,9 @@
 from dagster import Definitions
-from asset import PAY_DATE_Asset
+from asset import PAY_DATE_Asset, LOAD_SQLSERVER_CSV
 from resource import CLICKHOUSE_TABLES
 
 defs = Definitions(
-    assets=[PAY_DATE_Asset],  
+    assets=[PAY_DATE_Asset, LOAD_SQLSERVER_CSV],  
     jobs=[
     ],
     sensors=[],
